@@ -1,6 +1,7 @@
 ﻿namespace DefiningClassesPart1
 {
     using System;
+    using System.Text;
 
     public class Call
     {
@@ -78,6 +79,17 @@
             }
 
             return false;
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.AppendFormat("Call made on {0:dd/MM/yy}, at {0:H/mm/ss}, to {1}, with duration of {2} seconds.",
+                this.DateAndTime,
+                this.DialedPhoneNumber,
+                this.DurationInSec);
+
+            return sb.ToString();
         }
     }
 }
