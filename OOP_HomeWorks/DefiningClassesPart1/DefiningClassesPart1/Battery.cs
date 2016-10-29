@@ -1,8 +1,8 @@
-﻿using System;
-using System.Text;
-
-namespace DefiningClassesPart1
+﻿namespace DefiningClassesPart1
 {
+    using System;
+    using System.Text;
+
     public class Battery
     {
         private string model;

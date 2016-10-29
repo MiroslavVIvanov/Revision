@@ -1,7 +1,7 @@
-﻿using System.Text;
-
-namespace DefiningClassesPart1
+﻿namespace DefiningClassesPart1
 {
+    using System.Text;
+
     public class Display
     {
         private ushort size;
