@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace GenericClass
+﻿namespace GenericClass
 {
+    using System;
+
     public class GenericList<T>
     {
         private T[] elementsArray;
@@ -10,7 +10,7 @@ namespace GenericClass
         public GenericList(int initialSize = 16)
         {
             this.ElementsArray = new T[initialSize];
-            this.CurrentIndex = -1;
+            this.CurrentMaxIndex = -1;
         }
 
         public int Capacity
@@ -25,24 +25,11 @@ namespace GenericClass
         {
             get
             {
-                return this.CurrentIndex;
+                return this.CurrentMaxIndex;
             }
         }
 
-        private T[] ElementsArray
-        {
-            get
-            {
-                return this.elementsArray;
-            }
-
-            set
-            {
-                this.elementsArray = value;
-            }
-        }
-
-        public int CurrentIndex
+        public int CurrentMaxIndex
         {
             get
             {
@@ -62,6 +49,19 @@ namespace GenericClass
             }
         }
 
+        private T[] ElementsArray
+        {
+            get
+            {
+                return this.elementsArray;
+            }
+
+            set
+            {
+                this.elementsArray = value;
+            }
+        }
+
         public T this[int index]
         {
             get
@@ -70,6 +70,7 @@ namespace GenericClass
                 {
                     throw new ArgumentOutOfRangeException();
                 }
+
                 return this.ElementsArray[index];
             }
         }
@@ -81,8 +82,66 @@ namespace GenericClass
                 this.AutoGrow();
             }
 
-            this.ElementsArray[this.CurrentIndex] = element;
-            this.CurrentIndex++;
+            this.ElementsArray[this.CurrentMaxIndex] = element;
+            this.CurrentMaxIndex++;
+        }
+
+        public void RemoveAt(int index)
+        {
+            if (this.Count == 0 || index > this.Count || index < 0)
+            {
+                throw new IndexOutOfRangeException("Index outside bounds of the generic list.");
+            }
+
+            T[] newArray = new T[this.Capacity];
+            for (int i = 0; i < index; i++)
+            {
+                newArray[i] = this.ElementsArray[i];
+            }
+
+            for (int i = index + 1; i < this.Capacity; i++)
+            {
+                newArray[i - 1] = this.ElementsArray[i];
+            }
+
+            this.ElementsArray = newArray;
+            this.CurrentMaxIndex--;
+        }
+
+        public void InsertAt(T element, int index)
+        {
+            if (index > this.Count || index < 0)
+            {
+                throw new IndexOutOfRangeException("Index outside bounds of the generic list.");
+            }
+
+            if (this.Count + 1 >= this.Capacity)
+            {
+                this.AutoGrow();
+            }
+
+            T[] newArray = new T[this.Capacity];
+
+            for (int i = 0; i < index; i++)
+            {
+                newArray[i] = this.ElementsArray[i];
+            }
+
+            newArray[index] = element;
+
+            for (int i = index + 1; i < this.Capacity; i++)
+            {
+                newArray[i + 1] = this.ElementsArray[i];
+            }
+
+            this.CurrentMaxIndex++;
+            this.ElementsArray = newArray;
+        }
+
+        public void Clear(int capacity = 16)
+        {
+            this.CurrentMaxIndex = 0;
+            this.ElementsArray = new T[capacity];
         }
 
         private void AutoGrow()

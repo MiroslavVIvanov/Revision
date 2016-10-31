@@ -6,15 +6,14 @@
         {
             GenericList<string> list = new GenericList<string>();
 
-            //list.Add("Pesho");
-            //list.Add("Pesho");
-            //list.Add("Penka");
+            list.Add("Pesho");
+            list.Add("Pesho");
+            list.Add("Penka");
 
             System.Console.WriteLine("count - {0}", list.Count);
             System.Console.WriteLine("capacity - {0}", list.Capacity);
 
-
-            System.Console.WriteLine(list[0]);
+            System.Console.WriteLine(list[2]);
         }
     }
 }
