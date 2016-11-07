@@ -22,6 +22,8 @@
             // Write a method that from a given array of students 
             // finds all students whose first name is before its last name alphabetically.
             // Use LINQ query operators.
+            Console.WriteLine("---------- 3 ----------");
+
             var filteredStudents =
                 from stud in students
                 where (stud.FirstName.CompareTo(stud.LastName) < 0)
@@ -35,7 +37,7 @@
             // Problem 4.Age range
             // Write a LINQ query that finds the first name and 
             // last name of all students with age between 18 and 24.
-            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("---------- 4 ----------");
             var studentsFilteredByAge =
                 from stud in students
                 where (stud.Age >= 18 && stud.Age <= 24)
@@ -51,7 +53,7 @@
             // with lambda expressions sort the students by 
             // first name and last name in descending order.
             // Rewrite the same with LINQ.
-            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("---------- 5 ----------");
             var orderedStudents =
                 from stud in students
                 orderby stud.FirstName ascending,
@@ -69,7 +71,7 @@
                 .ThenByDescending(stud => stud.LastName)
                 .ToList();
 
-            Console.WriteLine("-  -  -  -  -  -");
+            Console.WriteLine("***");
             foreach (var student in anotherOrderedStudents)
             {
                 Console.WriteLine(student.FirstName + " " + student.LastName);
@@ -78,7 +80,7 @@
             // Problem 6.Divisible by 7 and 3
             // Write a program that prints from given array of integers all numbers that are divisible by 7 and 3.
             // Use the built-in extension methods and lambda expressions.Rewrite the same with LINQ.
-            Console.WriteLine("------------------------------------------");
+            Console.WriteLine("---------- 6 ----------");
 
             int[] arrayOfNumbers = new int[] { 2, 77, 30, 21, 49, 42, 100, 147 };
 
@@ -92,7 +94,7 @@
                 Console.WriteLine(num);
             }
 
-            Console.WriteLine("-  -  -  -  -  -");
+            Console.WriteLine("***");
             var devisableWihtExtensions =
                 arrayOfNumbers
                     .Where(number => number % 3 == 0 && number % 7 == 0)
@@ -102,6 +104,22 @@
             {
                 Console.WriteLine(num);
             }
+
+            // Problem 17.Longest string
+            // Write a program to return the string with maximum length from an array of strings.
+            // Use LINQ.
+            Console.WriteLine("---------- 17 ----------");
+
+            string[] arrayOfStrings = new string[]
+            {
+                "asd", "I am the longest string in this array!", " l", "asd", "as", "asdasdasdasd", "a", "as"
+            };
+
+            var longestString = arrayOfStrings
+                .OrderByDescending(s => s.Length)
+                .First();
+
+            Console.WriteLine(longestString);
         }
     }
 }
