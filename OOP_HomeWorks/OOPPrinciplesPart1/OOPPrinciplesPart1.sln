@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanSystem", "HumanSystem\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanSystemConsoleClient", "HumanSystemConsoleClient\HumanSystemConsoleClient.csproj", "{69FB66C4-DBEA-44AA-A417-53196C6C9F70}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SchoolClasses", "SchoolClasses", "{C81EADA3-54EA-40C0-8DFC-886987F3E5B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchoolSystem", "SchoolSystem\SchoolSystem.csproj", "{6EEB003F-0BA5-4DCD-AB06-D60B324512F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +41,10 @@ Global
 		{69FB66C4-DBEA-44AA-A417-53196C6C9F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69FB66C4-DBEA-44AA-A417-53196C6C9F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69FB66C4-DBEA-44AA-A417-53196C6C9F70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EEB003F-0BA5-4DCD-AB06-D60B324512F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EEB003F-0BA5-4DCD-AB06-D60B324512F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EEB003F-0BA5-4DCD-AB06-D60B324512F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EEB003F-0BA5-4DCD-AB06-D60B324512F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,5 +54,6 @@ Global
 		{92D4A3A4-D67E-4174-8179-4D927637952D} = {6B3CE946-C275-40D2-815E-E96A83D44438}
 		{FFEEFCBA-7C9A-4925-B175-E395D47CCF1E} = {A62C7C2A-0EB7-47B8-B398-62D4E54620EE}
 		{69FB66C4-DBEA-44AA-A417-53196C6C9F70} = {A62C7C2A-0EB7-47B8-B398-62D4E54620EE}
+		{6EEB003F-0BA5-4DCD-AB06-D60B324512F5} = {C81EADA3-54EA-40C0-8DFC-886987F3E5B7}
 	EndGlobalSection
 EndGlobal
