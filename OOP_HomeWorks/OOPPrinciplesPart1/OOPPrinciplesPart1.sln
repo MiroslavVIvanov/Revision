@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalSystem", "AnimalSyste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimalSystemConsoleClient", "AnimalSystemConsoleClient\AnimalSystemConsoleClient.csproj", "{92D4A3A4-D67E-4174-8179-4D927637952D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StudentsAndWorkers", "StudentsAndWorkers", "{A62C7C2A-0EB7-47B8-B398-62D4E54620EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanSystem", "HumanSystem\HumanSystem.csproj", "{FFEEFCBA-7C9A-4925-B175-E395D47CCF1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HumanSystemConsoleClient", "HumanSystemConsoleClient\HumanSystemConsoleClient.csproj", "{69FB66C4-DBEA-44AA-A417-53196C6C9F70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +29,14 @@ Global
 		{92D4A3A4-D67E-4174-8179-4D927637952D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{92D4A3A4-D67E-4174-8179-4D927637952D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{92D4A3A4-D67E-4174-8179-4D927637952D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFEEFCBA-7C9A-4925-B175-E395D47CCF1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFEEFCBA-7C9A-4925-B175-E395D47CCF1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFEEFCBA-7C9A-4925-B175-E395D47CCF1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFEEFCBA-7C9A-4925-B175-E395D47CCF1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69FB66C4-DBEA-44AA-A417-53196C6C9F70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69FB66C4-DBEA-44AA-A417-53196C6C9F70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69FB66C4-DBEA-44AA-A417-53196C6C9F70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69FB66C4-DBEA-44AA-A417-53196C6C9F70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{53AD2F12-EF8C-4723-AC1B-F4CAF8753AB8} = {6B3CE946-C275-40D2-815E-E96A83D44438}
 		{92D4A3A4-D67E-4174-8179-4D927637952D} = {6B3CE946-C275-40D2-815E-E96A83D44438}
+		{FFEEFCBA-7C9A-4925-B175-E395D47CCF1E} = {A62C7C2A-0EB7-47B8-B398-62D4E54620EE}
+		{69FB66C4-DBEA-44AA-A417-53196C6C9F70} = {A62C7C2A-0EB7-47B8-B398-62D4E54620EE}
 	EndGlobalSection
 EndGlobal
