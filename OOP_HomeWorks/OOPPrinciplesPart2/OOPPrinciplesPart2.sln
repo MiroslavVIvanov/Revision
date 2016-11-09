@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesSystem", "ShapesSyste
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShapesSystemConsoleClient", "ShapesSystemConsoleClient\ShapesSystemConsoleClient.csproj", "{7F8A88AB-2390-4026-9396-EAAA607D3A11}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Exceptions", "Exceptions", "{25252809-AE63-44AE-8FDE-D99F182FE9CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExceptionsTask", "ExceptionsTask\ExceptionsTask.csproj", "{91C6CFEC-9071-4211-B8FB-412F4987F420}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +27,10 @@ Global
 		{7F8A88AB-2390-4026-9396-EAAA607D3A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F8A88AB-2390-4026-9396-EAAA607D3A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F8A88AB-2390-4026-9396-EAAA607D3A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91C6CFEC-9071-4211-B8FB-412F4987F420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91C6CFEC-9071-4211-B8FB-412F4987F420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91C6CFEC-9071-4211-B8FB-412F4987F420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91C6CFEC-9071-4211-B8FB-412F4987F420}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -30,5 +38,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C199F84B-4F8C-4521-9A80-18A6000213B1} = {C43D2F1C-D516-4D5F-A35F-FB30D173BB87}
 		{7F8A88AB-2390-4026-9396-EAAA607D3A11} = {C43D2F1C-D516-4D5F-A35F-FB30D173BB87}
+		{91C6CFEC-9071-4211-B8FB-412F4987F420} = {25252809-AE63-44AE-8FDE-D99F182FE9CC}
 	EndGlobalSection
 EndGlobal
