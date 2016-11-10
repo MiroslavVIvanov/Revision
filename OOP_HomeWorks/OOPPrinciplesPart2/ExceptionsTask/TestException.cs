@@ -22,10 +22,12 @@
             }
 
             Console.Write("Input date (dd.MM.yyyy): ");
+
             DateTime testdate = DateTime.ParseExact(
                 Console.ReadLine(),
                 "dd.MM.yyyy",
                 System.Globalization.DateTimeFormatInfo.InvariantInfo);
+
             DateTime startDate = new DateTime(1980, 1, 1);
             DateTime endDate = new DateTime(2013, 12, 31);
 
