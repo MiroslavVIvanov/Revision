@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Person", "Person", "{95B048AE-7160-4159-8253-8C3256089C2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonSystem", "PersonSystem\PersonSystem.csproj", "{A066B48C-8CDE-4635-B596-E79D3964A7DA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Student", "Student", "{7B286CC0-738B-494C-89EB-8DE86517A2A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystem", "StudentSystem\StudentSystem.csproj", "{D126D699-033B-47C8-9B99-85E05A96F5C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StudentSystemConsoleClient", "StudentSystemConsoleClient\StudentSystemConsoleClient.csproj", "{5CE6388E-6466-47EC-B65F-A2EBBCA433E1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "64BitArray", "64BitArray", "{1C713ADF-FD3E-4083-B8A5-DB4C6632E804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitArray", "BitArray\BitArray.csproj", "{1299A3E5-4D6C-42F4-8409-C846E3EE42A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BitArrayTestApplication", "BitArrayTestApplication\BitArrayTestApplication.csproj", "{73B68075-EC3C-461B-BE95-51B4841142F8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A066B48C-8CDE-4635-B596-E79D3964A7DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A066B48C-8CDE-4635-B596-E79D3964A7DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A066B48C-8CDE-4635-B596-E79D3964A7DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A066B48C-8CDE-4635-B596-E79D3964A7DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D126D699-033B-47C8-9B99-85E05A96F5C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D126D699-033B-47C8-9B99-85E05A96F5C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D126D699-033B-47C8-9B99-85E05A96F5C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D126D699-033B-47C8-9B99-85E05A96F5C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5CE6388E-6466-47EC-B65F-A2EBBCA433E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5CE6388E-6466-47EC-B65F-A2EBBCA433E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5CE6388E-6466-47EC-B65F-A2EBBCA433E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5CE6388E-6466-47EC-B65F-A2EBBCA433E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1299A3E5-4D6C-42F4-8409-C846E3EE42A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1299A3E5-4D6C-42F4-8409-C846E3EE42A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1299A3E5-4D6C-42F4-8409-C846E3EE42A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1299A3E5-4D6C-42F4-8409-C846E3EE42A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73B68075-EC3C-461B-BE95-51B4841142F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73B68075-EC3C-461B-BE95-51B4841142F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73B68075-EC3C-461B-BE95-51B4841142F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73B68075-EC3C-461B-BE95-51B4841142F8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A066B48C-8CDE-4635-B596-E79D3964A7DA} = {95B048AE-7160-4159-8253-8C3256089C2C}
+		{D126D699-033B-47C8-9B99-85E05A96F5C6} = {7B286CC0-738B-494C-89EB-8DE86517A2A3}
+		{5CE6388E-6466-47EC-B65F-A2EBBCA433E1} = {7B286CC0-738B-494C-89EB-8DE86517A2A3}
+		{1299A3E5-4D6C-42F4-8409-C846E3EE42A0} = {1C713ADF-FD3E-4083-B8A5-DB4C6632E804}
+		{73B68075-EC3C-461B-BE95-51B4841142F8} = {1C713ADF-FD3E-4083-B8A5-DB4C6632E804}
+	EndGlobalSection
+EndGlobal
