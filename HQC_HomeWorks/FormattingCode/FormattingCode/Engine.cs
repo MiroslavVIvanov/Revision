@@ -62,7 +62,12 @@
             events.AddEvent(date, title, location);
         }
 
-        private static void GetParameters(string commandForExecution, string commandType, out DateTime dateAndTime, out string eventTitle, out string eventLocation)
+        private static void GetParameters(
+            string commandForExecution, 
+            string commandType, 
+            out DateTime dateAndTime, 
+            out string eventTitle, 
+            out string eventLocation)
         {
             dateAndTime = GetDate(commandForExecution, commandType);
             int firstPipeIndex = commandForExecution.IndexOf('|');

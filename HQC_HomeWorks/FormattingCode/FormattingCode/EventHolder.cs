@@ -5,7 +5,9 @@
 
     public class EventHolder
     {
-        private MultiDictionary<string, Event> storedByTitle = new MultiDictionary<string, Event>(true);
+        private MultiDictionary<string, Event> storedByTitle = 
+            new MultiDictionary<string, Event>(true);
+
         private OrderedBag<Event> sortedByDate = new OrderedBag<Event>();
 
         public void AddEvent(DateTime date, string title, string location)
