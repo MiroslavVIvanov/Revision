@@ -12,6 +12,9 @@
     {
         private ulong arrayValueAsUlong;
 
+        /// <summary>
+        /// Constructor for the BitArray64. Initializes the whole bit array filled with zeros.
+        /// </summary>
         public BitArray64()
         {
             this.arrayValueAsUlong = 0;
