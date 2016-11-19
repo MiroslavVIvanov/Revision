@@ -4,12 +4,29 @@
 
     public class Circle : Figure
     {
+        private double radius;
+
         public Circle(double radius)
         {
             this.Radius = radius;
         }
 
-        public double Radius { get; set; }
+        public double Radius
+        {
+            get
+            {
+                return this.radius;
+            }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Circle radius can not be less than 0;");
+                }
+
+                this.radius = value;
+            }
+        }
 
         public override double CalculateSurface()
         {

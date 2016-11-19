@@ -4,15 +4,50 @@
 
     public class Rectangle : Figure
     {
+        private double width;
+        private double height;
+
         public Rectangle(double width, double height)
         {
             this.Width = width;
             this.Height = height;
         }
 
-        public double Width { get; set; }
+        public double Width
+        {
+            get
+            {
+                return this.width;
+            }
 
-        public double Height { get; set; }
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Rectangle width can not be less than 0;");
+                }
+
+                this.width = value;
+            }
+        }
+
+        public double Height
+        {
+            get
+            {
+                return this.height;
+            }
+
+            set
+            {
+                if (value < 0)
+                {
+                    throw new ArgumentException("Rectangle height can not be less than 0;");
+                }
+
+                this.height = value;
+            }
+        }
 
         public override double CalculateSurface()
         {

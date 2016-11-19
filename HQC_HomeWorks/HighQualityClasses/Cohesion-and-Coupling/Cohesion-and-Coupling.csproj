@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DistanceUtils.cs" />
+    <Compile Include="FileNameUtils.cs" />
     <Compile Include="UtilsExamples.cs" />
-    <Compile Include="Utils.cs" />
+    <Compile Include="Parallelepiped.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
