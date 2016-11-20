@@ -77,25 +77,25 @@
 
         public double CalculateInnerDiagonal()
         {
-            var diagonal = CalculateDiagonal(this.Width, this.Height, this.Depth);
+            var diagonal = this.CalculateDiagonal(this.Width, this.Height, this.Depth);
             return diagonal;
         }
 
         public double CalculateFirstSideDiagonal()
         {
-            var diagonal = CalculateDiagonal(this.Width, this.Height);
+            var diagonal = this.CalculateDiagonal(this.Width, this.Height);
             return diagonal;
         }
 
         public double CalculateSecondSideDiagonal()
         {
-            var diagonal = CalculateDiagonal(this.Width, this.Depth);
+            var diagonal = this.CalculateDiagonal(this.Width, this.Depth);
             return diagonal;
         }
 
         public double CalculateThirdSideDiagonal()
         {
-            var diagonal = CalculateDiagonal(this.Height, this.Depth);
+            var diagonal = this.CalculateDiagonal(this.Height, this.Depth);
             return diagonal;
         }
 
