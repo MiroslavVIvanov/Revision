@@ -1,5 +1,7 @@
 # High-quality Classes Homework
 
+[Original repo](https://github.com/TelerikAcademy/High-Quality-Code/tree/master/08.%20High-quality%20Classes/Homework)
+
 ## Task 1. Good Abstraction
 *	Take the VS solution `Abstraction` and refactor its code to provide **good abstraction**.
 	*	Move the properties and methods from the class `Figure` to their correct place.
