@@ -14,6 +14,14 @@
             this.matrix = new int[matrixSize, matrixSize];
         }
 
+        public int MatrixSize
+        {
+            get
+            {
+                return this.matrix.GetLength(0);
+            }
+        }
+
         public void ChangeToNextDirection(ref int currentRowDirection, ref int currentColDirection)
         {
             int currentDirectionIndex = 0;
@@ -88,64 +96,28 @@
             int currentRowDirection = 1;
             int currentColDirection = 1;
 
-            while (true)
+            while (cellValue <= this.MatrixSize * this.MatrixSize)
             {
                 this.matrix[currentRow, currentCol] = cellValue;
                 cellValue++;
 
-                // check if there is free neighbour
                 if (!this.IsNextCellAvailable(currentRow, currentCol))
                 {
-                    break;
+                    this.FindAvailableCell(out currentRow, out currentCol);
+                    continue;
                 }
 
-                // check if change direction is needed
-                //if (currentRow + currentRowDirection >= n || 
-                //    currentRow + currentRowDirection < 0 || 
-                //    currentCol + currentColDirection >= n || 
-                //    currentCol + currentColDirection < 0 || 
-                //    matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0)
-                //{
-
-                while ((currentRow + currentRowDirection >= n ||
+                while ((currentRow + currentRowDirection >= this.MatrixSize ||
                     currentRow + currentRowDirection < 0 ||
-                    currentCol + currentColDirection >= n ||
+                    currentCol + currentColDirection >= this.MatrixSize ||
                     currentCol + currentColDirection < 0 ||
                     matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0))
                 {
                     this.ChangeToNextDirection(ref currentRowDirection, ref currentColDirection);
                 }
-                //}
 
                 currentRow += currentRowDirection;
                 currentCol += currentColDirection;
-            }
-
-            this.FindAvailableCell(out currentRow, out currentCol);
-
-            if (currentRow != 0 && currentCol != 0)
-            {
-                currentRowDirection = 1; currentColDirection = 1;
-
-                while (true)
-                {
-                    matrix[currentRow, currentCol] = cellValue;
-
-                    if (!this.IsNextCellAvailable(currentRow, currentCol))
-                    {
-                        break;
-                    }
-
-                    if (currentRow + currentRowDirection >= n || currentRow + currentRowDirection < 0 || currentCol + currentColDirection >= n || currentCol + currentColDirection < 0 || matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0)
-                    {
-                        while ((currentRow + currentRowDirection >= n || currentRow + currentRowDirection < 0 || currentCol + currentColDirection >= n || currentCol + currentColDirection < 0 || matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0))
-                        {
-                            this.ChangeToNextDirection(ref currentRowDirection, ref currentColDirection);
-                        }
-                    }
-
-                    currentRow += currentRowDirection; currentCol += currentColDirection; cellValue++;
-                }
             }
         }
 
@@ -163,7 +135,7 @@
                 sb.AppendLine();
             }
 
-            return sb.ToString();
+            return sb.ToString().Trim();
         }
     }
 }
