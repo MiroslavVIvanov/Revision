@@ -4,8 +4,19 @@
 
     public class Matrix
     {
-        private static readonly int[] rowDirections = new int[] { 1, 1, 1, 0, -1, -1, -1, 0 };
-        private static readonly int[] colDirections = new int[] { 1, 0, -1, -1, -1, 0, 1, 1 };
+        private static readonly Direction[] directions = new Direction[] {
+            new Direction(1, 1),
+            new Direction(1, 0),
+            new Direction(1, -1),
+            new Direction(0, -1),
+            new Direction(-1, -1),
+            new Direction(-1, 0),
+            new Direction(-1, 1),
+            new Direction(0, 1),
+        };
+
+        //private static readonly int[] rowDirections = new int[] { 1, 1, 1, 0, -1, -1, -1, 0 };
+        //private static readonly int[] colDirections = new int[] { 1, 0, -1, -1, -1, 0, 1, 1 };
 
         private int[,] matrix;
 
@@ -22,44 +33,42 @@
             }
         }
 
-        public void ChangeToNextDirection(ref int currentRowDirection, ref int currentColDirection)
+        public Direction ChangeToNextDirection(Direction currentDirection)
         {
             int currentDirectionIndex = 0;
-            for (int i = 0; i < rowDirections.Length; i++)
+            for (int i = 0; i < directions.Length; i++)
             {
-                if (rowDirections[i] == currentRowDirection && colDirections[i] == currentColDirection)
+                if (currentDirection == directions[i])
                 {
                     currentDirectionIndex = i;
                     break;
                 }
             }
 
-            if (currentDirectionIndex == rowDirections.Length - 1)
+            if (currentDirectionIndex == directions.Length - 1)
             {
-                currentRowDirection = rowDirections[0];
-                currentColDirection = colDirections[0];
-                return;
+                return directions[0].Clone();
             }
 
-            currentRowDirection = rowDirections[currentDirectionIndex + 1];
-            currentColDirection = colDirections[currentDirectionIndex + 1];
+            return directions[currentDirectionIndex + 1].Clone();
         }
 
-        public bool IsNextCellAvailable(int currentRow, int currentCol)
+        public bool IsNextCellAvailable(Position currentPosition)
         {
-            for (int i = 0; i < rowDirections.Length; i++)
+            for (int i = 0; i < directions.Length; i++)
             {
-                bool isNextRowInMatrix = currentRow + rowDirections[i] < this.matrix.GetLength(0);
-                bool isNextRowMoreThanZero = currentRow + rowDirections[i] >= 0;
+                bool isNextRowInMatrix = currentPosition.Row + directions[i].RowDirection < this.matrix.GetLength(0);
+                bool isNextRowMoreThanZero = currentPosition.Row + directions[i].RowDirection >= 0;
 
-                bool isNextColInMatrix = currentCol + colDirections[i] < this.matrix.GetLength(1);
-                bool isNextColMoreThanZero = currentCol + colDirections[i] >= 0;
+                bool isNextColInMatrix = currentPosition.Col + directions[i].ColDirection < this.matrix.GetLength(1);
+                bool isNextColMoreThanZero = currentPosition.Col + directions[i].ColDirection >= 0;
 
                 if (isNextRowMoreThanZero &&
                     isNextRowInMatrix &&
                     isNextColMoreThanZero &&
                     isNextColInMatrix &&
-                    this.matrix[currentRow + rowDirections[i], currentCol + colDirections[i]] == 0)
+                    this.matrix[currentPosition.Row + directions[i].RowDirection, 
+                    currentPosition.Col + directions[i].ColDirection] == 0)
                 {
                     return true;
                 }
@@ -92,31 +101,40 @@
             int cellValue = 1;
 
             Position currentPosition = new Position(0, 0);
-            int currentRowDirection = 1;
-            int currentColDirection = 1;
+            Direction direction = directions[0].Clone();
+
+            //int currentRowDirection = 1;
+            //int currentColDirection = 1;
 
             while (cellValue <= this.MatrixSize * this.MatrixSize)
             {
                 this.matrix[currentPosition.Row, currentPosition.Col] = cellValue;
                 cellValue++;
 
-                if (!this.IsNextCellAvailable(currentPosition.Row, currentPosition.Col))
+                if (!this.IsNextCellAvailable(currentPosition))
                 {
                     this.FindAvailableCell(currentPosition);
                     continue;
                 }
 
-                while ((currentPosition.Row + currentRowDirection >= this.MatrixSize ||
-                    currentPosition.Row + currentRowDirection < 0 ||
-                    currentPosition.Col + currentColDirection >= this.MatrixSize ||
-                    currentPosition.Col + currentColDirection < 0 ||
-                    matrix[currentPosition.Row + currentRowDirection, currentPosition.Col + currentColDirection] != 0))
+
+                while (true)
                 {
-                    this.ChangeToNextDirection(ref currentRowDirection, ref currentColDirection);
+                    bool check = currentPosition.Row + direction.RowDirection >= this.MatrixSize ||
+                        currentPosition.Row + direction.RowDirection < 0 ||
+                        currentPosition.Col + direction.ColDirection >= this.MatrixSize ||
+                        currentPosition.Col + direction.ColDirection < 0 ||
+                        matrix[currentPosition.Row + direction.RowDirection, currentPosition.Col + direction.ColDirection] != 0;
+
+                    if (!check)
+                    {
+                        break;
+                    }
+                    direction = this.ChangeToNextDirection(direction);
                 }
 
-                currentPosition.Row += currentRowDirection;
-                currentPosition.Col += currentColDirection;
+                currentPosition.Row += direction.RowDirection;
+                currentPosition.Col += direction.ColDirection;
             }
         }
 

@@ -37,6 +37,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Direction.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="StartUp.cs" />
