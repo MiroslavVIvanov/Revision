@@ -1,16 +1,19 @@
 ﻿namespace MatrixWalk
 {
     using System;
+    using InputProviders;
 
     public class StartUp
     {
         public static void Main()
         {
-            Console.Write("Enter a positive number: ");
+            Console.WriteLine("Enter a positive number: ");
 
             int matrixSize = 0;
 
-            while (!int.TryParse(Console.ReadLine(), out matrixSize) || matrixSize < 0 || matrixSize > 100)
+            IInputProvider inputProvider = new ConsoleInputProvider();
+
+            while (!int.TryParse(inputProvider.Read(), out matrixSize) || matrixSize < 0 || matrixSize > 100)
             {
                 Console.WriteLine("You haven't entered a correct positive number");
             }

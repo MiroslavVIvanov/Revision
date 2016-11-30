@@ -37,10 +37,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsoleReader.cs" />
     <Compile Include="Direction.cs" />
+    <Compile Include="IInputProvider.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="Position.cs" />
     <Compile Include="StartUp.cs" />
+    <Compile Include="TestInputProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
