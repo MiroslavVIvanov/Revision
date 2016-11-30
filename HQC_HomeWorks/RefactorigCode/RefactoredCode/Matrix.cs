@@ -1,13 +1,20 @@
 ﻿namespace MatrixWalk
 {
-    using System;
+    using System.Text;
 
     public class Matrix
     {
         private static readonly int[] rowDirections = new int[] { 1, 1, 1, 0, -1, -1, -1, 0 };
         private static readonly int[] colDirections = new int[] { 1, 0, -1, -1, -1, 0, 1, 1 };
 
-        public static void ChangeDirection(ref int currentRowDirection, ref int currentColDirection)
+        private int[,] matrix;
+
+        public Matrix(int matrixSize)
+        {
+            this.matrix = new int[matrixSize, matrixSize];
+        }
+
+        public void ChangeToNextDirection(ref int currentRowDirection, ref int currentColDirection)
         {
             int currentDirectionIndex = 0;
             for (int i = 0; i < rowDirections.Length; i++)
@@ -19,7 +26,7 @@
                 }
             }
 
-            if (currentDirectionIndex == rowDirections.Length)
+            if (currentDirectionIndex == rowDirections.Length - 1)
             {
                 currentRowDirection = rowDirections[0];
                 currentColDirection = colDirections[0];
@@ -30,24 +37,21 @@
             currentColDirection = colDirections[currentDirectionIndex + 1];
         }
 
-        public static bool IsNextCellAvailable(int[,] matrix, int currentRow, int currentCol)
+        public bool IsNextCellAvailable(int currentRow, int currentCol)
         {
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < rowDirections.Length; i++)
             {
-                if (currentRow + rowDirections[i] >= matrix.GetLength(0) || currentRow + rowDirections[i] < 0)
-                {
-                    rowDirections[i] = 0;
-                }
+                bool isNextRowInMatrix = currentRow + rowDirections[i] < this.matrix.GetLength(0);
+                bool isNextRowMoreThanZero = currentRow + rowDirections[i] >= 0;
 
-                if (currentCol + colDirections[i] >= matrix.GetLength(0) || currentCol + colDirections[i] < 0)
-                {
-                    colDirections[i] = 0;
-                }
-            }
+                bool isNextColInMatrix = currentCol + colDirections[i] < this.matrix.GetLength(1);
+                bool isNextColMoreThanZero = currentCol + colDirections[i] >= 0;
 
-            for (int i = 0; i < 8; i++)
-            {
-                if (matrix[currentRow + rowDirections[i], currentCol + colDirections[i]] == 0)
+                if (isNextRowMoreThanZero &&
+                    isNextRowInMatrix &&
+                    isNextColMoreThanZero &&
+                    isNextColInMatrix &&
+                    this.matrix[currentRow + rowDirections[i], currentCol + colDirections[i]] == 0)
                 {
                     return true;
                 }
@@ -56,14 +60,14 @@
             return false;
         }
 
-        public static void FindAvailableCell(int[,] matrix, out int currentRow, out int currentCol)
+        public void FindAvailableCell(out int currentRow, out int currentCol)
         {
             currentRow = 0;
             currentCol = 0;
 
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            for (int i = 0; i < this.matrix.GetLength(0); i++)
             {
-                for (int j = 0; j < matrix.GetLength(0); j++)
+                for (int j = 0; j < this.matrix.GetLength(0); j++)
                 {
                     if (matrix[i, j] == 0)
                     {
@@ -75,53 +79,91 @@
             }
         }
 
-        public static void TraverseMatrix(int[,] matrix)
+        public void TraverseMatrix()
         {
-            int n = matrix.GetLength(0);
-            int step = n, k = 1, i = 0, j = 0, dx = 1, dy = 1;
+            int n = this.matrix.GetLength(0);
+            int cellValue = 1;
+            int currentRow = 0;
+            int currentCol = 0;
+            int currentRowDirection = 1;
+            int currentColDirection = 1;
 
             while (true)
-            { //malko e kofti tova uslovie, no break-a raboti 100% : )
-                matrix[i, j] = k;
+            {
+                this.matrix[currentRow, currentCol] = cellValue;
 
-                if (!Matrix.IsNextCellAvailable(matrix, i, j)) { break; } // prekusvame ako sme se zadunili
-                if (i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrix[i + dx, j + dy] != 0)
+                // check if there is free neighbour
+                if (!this.IsNextCellAvailable(currentRow, currentCol))
+                {
+                    break;
+                }
 
+                // check if change direction is needed
+                //if (currentRow + currentRowDirection >= n || 
+                //    currentRow + currentRowDirection < 0 || 
+                //    currentCol + currentColDirection >= n || 
+                //    currentCol + currentColDirection < 0 || 
+                //    matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0)
+                //{
 
-                    while ((i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrix[i + dx, j + dy] != 0)) { Matrix.ChangeDirection(ref dx, ref dy); }
-                i += dx; j += dy; k++;
+                while ((currentRow + currentRowDirection >= n ||
+                    currentRow + currentRowDirection < 0 ||
+                    currentCol + currentColDirection >= n ||
+                    currentCol + currentColDirection < 0 ||
+                    matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0))
+                {
+                    this.ChangeToNextDirection(ref currentRowDirection, ref currentColDirection);
+                }
+                //}
+
+                currentRow += currentRowDirection;
+                currentCol += currentColDirection;
+                cellValue++;
             }
 
-            Matrix.FindAvailableCell(matrix, out i, out j);
-            if (i != 0 && j != 0)
-            { // taka go napravih, zashtoto funkciqta ne mi davashe da ne si definiram out parametrite
-                dx = 1; dy = 1;
+            this.FindAvailableCell(out currentRow, out currentCol);
+
+            if (currentRow != 0 && currentCol != 0)
+            {
+                currentRowDirection = 1; currentColDirection = 1;
 
                 while (true)
-                { //malko e kofti tova uslovie, no break-a raboti 100% : )
-                    matrix[i, j] = k;
-                    if (!Matrix.IsNextCellAvailable(matrix, i, j)) { break; }// prekusvame ako sme se zadunili
-                    if (i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrix[i + dx, j + dy] != 0)
+                {
+                    matrix[currentRow, currentCol] = cellValue;
 
+                    if (!this.IsNextCellAvailable(currentRow, currentCol))
+                    {
+                        break;
+                    }
 
-                        while ((i + dx >= n || i + dx < 0 || j + dy >= n || j + dy < 0 || matrix[i + dx, j + dy] != 0)) Matrix.ChangeDirection(ref dx, ref dy);
-                    i += dx; j += dy; k++;
+                    if (currentRow + currentRowDirection >= n || currentRow + currentRowDirection < 0 || currentCol + currentColDirection >= n || currentCol + currentColDirection < 0 || matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0)
+                    {
+                        while ((currentRow + currentRowDirection >= n || currentRow + currentRowDirection < 0 || currentCol + currentColDirection >= n || currentCol + currentColDirection < 0 || matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0))
+                        {
+                            this.ChangeToNextDirection(ref currentRowDirection, ref currentColDirection);
+                        }
+                    }
+
+                    currentRow += currentRowDirection; currentCol += currentColDirection; cellValue++;
                 }
             }
         }
 
-
-        public static void PrintMatrix(int[,] matrix)
+        public override string ToString()
         {
+            StringBuilder sb = new StringBuilder();
+
             for (int row = 0; row < matrix.GetLength(0); row++)
             {
                 for (int col = 0; col < matrix.GetLength(1); col++)
                 {
-                    Console.Write("{0,3}", matrix[row, col]);
+                    sb.AppendFormat("{0,3}", matrix[row, col]);
                 }
 
-                Console.WriteLine();
+                sb.AppendLine();
             }
+
+            return sb.ToString();
         }
     }
 }

@@ -6,7 +6,7 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter a positive number ");
+            Console.Write("Enter a positive number ");
             string input = Console.ReadLine();
             int n = 0;
             while (!int.TryParse(input, out n) || n < 0 || n > 100)
@@ -15,10 +15,10 @@
                 input = Console.ReadLine();
             }
 
-            int[,] matrix = new int[n, n];
+            Matrix matrix = new Matrix(n);
+            matrix.TraverseMatrix();
 
-            Matrix.TraverseMatrix(matrix);
-            Matrix.PrintMatrix(matrix);
+            Console.WriteLine(matrix.ToString());
         }
     }
 }
