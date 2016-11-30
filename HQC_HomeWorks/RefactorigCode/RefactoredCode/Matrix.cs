@@ -68,10 +68,10 @@
             return false;
         }
 
-        public void FindAvailableCell(out int currentRow, out int currentCol)
+        public void FindAvailableCell(Position currentPosition)
         {
-            currentRow = 0;
-            currentCol = 0;
+            currentPosition.Row = 0;
+            currentPosition.Col = 0;
 
             for (int i = 0; i < this.matrix.GetLength(0); i++)
             {
@@ -79,8 +79,8 @@
                 {
                     if (matrix[i, j] == 0)
                     {
-                        currentRow = i;
-                        currentCol = j;
+                        currentPosition.Row = i;
+                        currentPosition.Col = j;
                         return;
                     }
                 }
@@ -89,35 +89,34 @@
 
         public void TraverseMatrix()
         {
-            int n = this.matrix.GetLength(0);
             int cellValue = 1;
-            int currentRow = 0;
-            int currentCol = 0;
+
+            Position currentPosition = new Position(0, 0);
             int currentRowDirection = 1;
             int currentColDirection = 1;
 
             while (cellValue <= this.MatrixSize * this.MatrixSize)
             {
-                this.matrix[currentRow, currentCol] = cellValue;
+                this.matrix[currentPosition.Row, currentPosition.Col] = cellValue;
                 cellValue++;
 
-                if (!this.IsNextCellAvailable(currentRow, currentCol))
+                if (!this.IsNextCellAvailable(currentPosition.Row, currentPosition.Col))
                 {
-                    this.FindAvailableCell(out currentRow, out currentCol);
+                    this.FindAvailableCell(currentPosition);
                     continue;
                 }
 
-                while ((currentRow + currentRowDirection >= this.MatrixSize ||
-                    currentRow + currentRowDirection < 0 ||
-                    currentCol + currentColDirection >= this.MatrixSize ||
-                    currentCol + currentColDirection < 0 ||
-                    matrix[currentRow + currentRowDirection, currentCol + currentColDirection] != 0))
+                while ((currentPosition.Row + currentRowDirection >= this.MatrixSize ||
+                    currentPosition.Row + currentRowDirection < 0 ||
+                    currentPosition.Col + currentColDirection >= this.MatrixSize ||
+                    currentPosition.Col + currentColDirection < 0 ||
+                    matrix[currentPosition.Row + currentRowDirection, currentPosition.Col + currentColDirection] != 0))
                 {
                     this.ChangeToNextDirection(ref currentRowDirection, ref currentColDirection);
                 }
 
-                currentRow += currentRowDirection;
-                currentCol += currentColDirection;
+                currentPosition.Row += currentRowDirection;
+                currentPosition.Col += currentColDirection;
             }
         }
 
@@ -135,7 +134,7 @@
                 sb.AppendLine();
             }
 
-            return sb.ToString().Trim();
+            return sb.ToString().TrimEnd();
         }
     }
 }
