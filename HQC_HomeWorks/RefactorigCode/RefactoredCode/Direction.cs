@@ -49,21 +49,6 @@
             }
         }
 
-        //public override bool Equals(object obj)
-        //{
-        //    if (obj == null)
-        //    {
-        //        return false;
-        //    }
-
-        //    if (this == obj as Direction)
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
-
         public static bool operator ==(Direction firstDirection, Direction secondDirection)
         {
             if (firstDirection.RowDirection == secondDirection.RowDirection &&
@@ -78,6 +63,26 @@
         public static bool operator !=(Direction firstDirection, Direction secondDirection)
         {
             return !(firstDirection == secondDirection);
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (this == obj as Direction)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         public Direction Clone()

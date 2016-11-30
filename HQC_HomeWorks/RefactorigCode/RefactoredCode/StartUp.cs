@@ -4,20 +4,18 @@
 
     public class StartUp
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             Console.Write("Enter a positive number: ");
-            string input = Console.ReadLine();
-            int n = 0;
-            while (!int.TryParse(input, out n) || n < 0 || n > 100)
+
+            int matrixSize = 0;
+
+            while (!int.TryParse(Console.ReadLine(), out matrixSize) || matrixSize < 0 || matrixSize > 100)
             {
                 Console.WriteLine("You haven't entered a correct positive number");
-                input = Console.ReadLine();
             }
 
-            Matrix matrix = new Matrix(n);
-            matrix.TraverseMatrix();
-
+            Matrix matrix = new Matrix(matrixSize);
             Console.WriteLine(matrix.ToString());
         }
     }

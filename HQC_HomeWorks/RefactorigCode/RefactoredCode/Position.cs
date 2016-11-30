@@ -19,6 +19,7 @@
             {
                 return this.row;
             }
+
             set
             {
                 if (value < 0)
@@ -36,6 +37,7 @@
             {
                 return this.col;
             }
+
             set
             {
                 if (value < 0)
