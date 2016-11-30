@@ -91,6 +91,7 @@
             while (true)
             {
                 this.matrix[currentRow, currentCol] = cellValue;
+                cellValue++;
 
                 // check if there is free neighbour
                 if (!this.IsNextCellAvailable(currentRow, currentCol))
@@ -118,7 +119,6 @@
 
                 currentRow += currentRowDirection;
                 currentCol += currentColDirection;
-                cellValue++;
             }
 
             this.FindAvailableCell(out currentRow, out currentCol);
