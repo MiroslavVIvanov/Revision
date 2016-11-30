@@ -11,7 +11,7 @@
 
             int matrixSize = 0;
 
-            IInputProvider inputProvider = new ConsoleInputProvider();
+            IIOProvider inputProvider = new ConsoleIOProvider();
 
             while (!int.TryParse(inputProvider.Read(), out matrixSize) || matrixSize < 0 || matrixSize > 100)
             {

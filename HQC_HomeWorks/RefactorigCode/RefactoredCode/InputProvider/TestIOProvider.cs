@@ -1,14 +1,20 @@
 ﻿namespace MatrixWalk.InputProviders
 {
-    public class TestInputProvider : IInputProvider
-    {
+    using System;
 
-        public TestInputProvider(string inputToProvide)
+    public class TestIOProvider : IIOProvider
+    {
+        public TestIOProvider(string inputToProvide)
         {
             this.StringToProvide = inputToProvide;
         }
 
         public string StringToProvide { get; set; }
+
+        public void Display(string stringToDisplay)
+        {
+            throw new NotImplementedException();
+        }
 
         public string Read()
         {
